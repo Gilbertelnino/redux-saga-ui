@@ -1,0 +1,35 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.card {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  width: 700px;
+}
+
+.content {
+  display: flex;
+  background-color: #a770ef;
+  align-items: center;
+  width: 100%;
+}
+.content p {
+  padding: 0 15px;
+}
+.card-image {
+  width: 150px;
+  height: 150px;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

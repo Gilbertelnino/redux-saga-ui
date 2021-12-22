@@ -1,56 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import "./App.css";
+import { ToastContainer } from "react-toastify";
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/auth/Login";
+import ProtectedRoute from "./utils/ProtectedRoutes";
+import Home from "./components/home/Home";
+import AddUser from "./components/auth/AddUser";
+import "react-toastify/dist/ReactToastify.css";
+import EditUser from "./components/auth/EditUser";
+import ProductList from "./components/products/ProductList";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <ToastContainer />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<ProtectedRoute component={Home} />} />
+        <Route
+          path="users/:id"
+          element={<ProtectedRoute component={EditUser} />}
+        />
+        <Route
+          path="/new-user"
+          element={<ProtectedRoute component={AddUser} />}
+        />
+        <Route
+          path="/cart/products"
+          element={<ProtectedRoute component={ProductList} />}
+        />
+      </Routes>
     </div>
   );
 }
